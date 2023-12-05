@@ -8,19 +8,23 @@
 import SwiftUI
 
 struct InfoView: View {
+    var savedTitleOn : Bool
+    
     var body: some View {
-        NavigationView {
-            List(PostArray().data) {post in
-                
-                NavigationLink {
-                    InfoDetails(post: post)
-                } label: {
-                    InfoRow(post: post)
-                }
-            }.navigationTitle("Movies top list")
-                .listStyle(.plain)
-        }
+            NavigationView {
+                List(PostArray().data) {post in
+                    
+                    NavigationLink {
+                        InfoDetails(post: post)
+                    } label: {
+                        InfoRow(post: post)
+                    }
+                }.navigationTitle("Movies top list")
+                 .listStyle(.plain)
+                 .toolbar(savedTitleOn ? .visible : .hidden)
+            }
     }
 }
+
 
 
