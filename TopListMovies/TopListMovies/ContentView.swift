@@ -10,16 +10,17 @@ import SwiftUI
 struct ContentView: View {
    
     @AppStorage("titleOn") var savedTitleOn  = true
-    
+    @State var situation  = Situation(quizState: .question)
     var body: some View {
         TabView() {
             InfoView(savedTitleOn: savedTitleOn)
             .tabItem {
                 Label("List", systemImage: "tray.full")
             }
-            HelloView()
+            FilmsQuiz()
+                .environmentObject(Situation(quizState: .question))
                 .tabItem {
-                    Label("Hello" , systemImage: "hand.raised")
+                    Label("Film's quiz" , systemImage: "dice")
                 }
             SettingsView(savedTitleOn: $savedTitleOn)
                 .tabItem {
